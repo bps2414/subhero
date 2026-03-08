@@ -8,17 +8,17 @@ export async function login(formData: FormData) {
     const supabase = createClient()
     const headerList = headers()
 
-    // Determine the exact origin. Vercel exposes VERCEL_PROJECT_PRODUCTION_URL.
+    // Get origin from headers for absolute reliability on Vercel
+    const host = headerList.get('x-forwarded-host') || headerList.get('host')
+    const protocol = headerList.get('x-forwarded-proto') || 'http'
+
     let origin = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
-    if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    if (host) {
+        origin = `${protocol}://${host}`
+    } else if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
         origin = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     } else if (process.env.VERCEL_URL) {
-        origin = `https://${process.env.VERCEL_URL}` // For preview deployments
-    } else {
-        const host = headerList.get('host')
-        if (host && !host.includes('localhost')) {
-            origin = `https://${host}`
-        }
+        origin = `https://${process.env.VERCEL_URL}`
     }
 
     const data = {
