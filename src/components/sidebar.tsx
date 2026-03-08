@@ -4,8 +4,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
     LayoutDashboard,
-    Plus,
-    Bell,
     Settings,
     Zap,
     LogOut,
@@ -15,15 +13,13 @@ import {
 import { cn } from '@/lib/utils'
 
 const mainNav = [
-    { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { label: 'Subscriptions', href: '/dashboard/subscriptions', icon: CreditCard },
-    { label: 'Add New', href: '/dashboard/add', icon: Plus },
-    { label: 'Insights', href: '/dashboard/insights', icon: TrendingDown },
+    { label: 'Painel Geral', href: '/dashboard', icon: LayoutDashboard },
+    { label: 'Assinaturas', href: '#', icon: CreditCard, disabled: true },
+    { label: 'Relatórios', href: '#', icon: TrendingDown, disabled: true },
 ]
 
 const secondaryNav = [
-    { label: 'Notifications', href: '/dashboard/notifications', icon: Bell },
-    { label: 'Settings', href: '/dashboard/settings', icon: Settings },
+    { label: 'Configurações', href: '#', icon: Settings, disabled: true },
 ]
 
 export function Sidebar() {
@@ -44,19 +40,22 @@ export function Sidebar() {
             {/* Main Nav */}
             <nav className="flex-1 flex flex-col gap-1">
                 <p className="px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 mb-2">
-                    Menu
+                    Menu Principal
                 </p>
                 {mainNav.map((item) => {
                     const isActive = pathname === item.href
                     return (
                         <Link
-                            key={item.href}
-                            href={item.href}
+                            key={item.label}
+                            href={item.disabled ? '#' : item.href}
+                            onClick={(e) => item.disabled && e.preventDefault()}
                             className={cn(
                                 'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
                                 isActive
                                     ? 'bg-white/[0.08] text-white shadow-sm'
-                                    : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
+                                    : item.disabled
+                                        ? 'text-zinc-600 cursor-not-allowed'
+                                        : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
                             )}
                         >
                             <item.icon
@@ -66,9 +65,9 @@ export function Sidebar() {
                                 )}
                             />
                             {item.label}
-                            {item.label === 'Add New' && (
-                                <span className="ml-auto text-[10px] font-bold bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded-full">
-                                    NEW
+                            {item.disabled && (
+                                <span className="ml-auto text-[10px] font-bold bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded-full">
+                                    EM BREVE
                                 </span>
                             )}
                         </Link>
@@ -79,19 +78,22 @@ export function Sidebar() {
                 <div className="my-4 mx-3 h-px bg-zinc-800/60" />
 
                 <p className="px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 mb-2">
-                    System
+                    Sistema
                 </p>
                 {secondaryNav.map((item) => {
                     const isActive = pathname === item.href
                     return (
                         <Link
-                            key={item.href}
-                            href={item.href}
+                            key={item.label}
+                            href={item.disabled ? '#' : item.href}
+                            onClick={(e) => item.disabled && e.preventDefault()}
                             className={cn(
                                 'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
                                 isActive
                                     ? 'bg-white/[0.08] text-white shadow-sm'
-                                    : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
+                                    : item.disabled
+                                        ? 'text-zinc-600 cursor-not-allowed'
+                                        : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
                             )}
                         >
                             <item.icon
@@ -101,6 +103,11 @@ export function Sidebar() {
                                 )}
                             />
                             {item.label}
+                            {item.disabled && (
+                                <span className="ml-auto text-[10px] font-bold bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded-full">
+                                    EM BREVE
+                                </span>
+                            )}
                         </Link>
                     )
                 })}
@@ -114,7 +121,7 @@ export function Sidebar() {
                         className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-zinc-500 hover:text-red-400 hover:bg-red-500/[0.06] transition-all w-full"
                     >
                         <LogOut className="w-[18px] h-[18px] flex-shrink-0" />
-                        Sign Out
+                        Sair da Conta
                     </button>
                 </form>
             </div>

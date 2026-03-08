@@ -1,10 +1,19 @@
 import { login } from './actions'
+import { createClient } from '@/utils/supabase/server'
+import { redirect } from 'next/navigation'
 
-export default function LoginPage({
+export default async function LoginPage({
     searchParams,
 }: {
     searchParams: { message: string }
 }) {
+    const supabase = createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (user) {
+        redirect('/dashboard') // If already logged in, skip login page
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-zinc-950 p-4">
             {/* Background orbs/gradients for glassmorphism effect */}
