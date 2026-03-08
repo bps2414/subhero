@@ -29,7 +29,7 @@ export async function login(formData: FormData) {
         email: data.email,
         options: {
             shouldCreateUser: true,
-            emailRedirectTo: `${origin}/auth/callback`,
+            emailRedirectTo: `${origin}/auth/callback?next=/dashboard`,
         },
     })
 
