@@ -6,6 +6,27 @@ import { createClient } from '@/utils/supabase/server'
 
 export async function login(formData: FormData) {
     const supabase = createClient()
+
+    const data = {
+        email: formData.get('email') as string,
+        password: formData.get('password') as string,
+    }
+
+    const { error } = await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+    })
+
+    if (error) {
+        console.error('Auth error:', error.message)
+        redirect(`/login?message=${encodeURIComponent('Credenciais inválidas. Tente novamente.')}`)
+    }
+
+    redirect('/dashboard')
+}
+
+export async function signup(formData: FormData) {
+    const supabase = createClient()
     const headerList = headers()
 
     // Get origin from headers for absolute reliability on Vercel
@@ -23,20 +44,21 @@ export async function login(formData: FormData) {
 
     const data = {
         email: formData.get('email') as string,
+        password: formData.get('password') as string,
     }
 
-    const { error } = await supabase.auth.signInWithOtp({
+    const { error } = await supabase.auth.signUp({
         email: data.email,
+        password: data.password,
         options: {
-            shouldCreateUser: true,
             emailRedirectTo: `${origin}/auth/callback?next=/dashboard`,
         },
     })
 
     if (error) {
-        console.error('Auth error:', error.message)
-        redirect(`/login?message=${encodeURIComponent('Erro: ' + error.message)}`)
+        console.error('Signup error:', error.message)
+        redirect(`/login?message=${encodeURIComponent('Erro ao criar conta: ' + error.message)}`)
     }
 
-    redirect('/login?message=Verifique seu email para continuar o login')
+    redirect('/login?message=Verifique seu email para confirmar a criação da conta.')
 }
