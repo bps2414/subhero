@@ -34,7 +34,8 @@ export async function login(formData: FormData) {
     })
 
     if (error) {
-        redirect('/login?message=Não foi possível autenticar o usuário')
+        console.error('Auth error:', error.message)
+        redirect(`/login?message=${encodeURIComponent('Erro: ' + error.message)}`)
     }
 
     redirect('/login?message=Verifique seu email para continuar o login')
