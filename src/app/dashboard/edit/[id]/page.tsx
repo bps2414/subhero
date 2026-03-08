@@ -39,7 +39,7 @@ export default async function EditSubscriptionPage({
                 className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors mb-6"
             >
                 <ArrowLeft className="w-4 h-4" />
-                Back to Dashboard
+                Voltar ao Dashboard
             </Link>
 
             <div className="glass-card p-6">
@@ -56,8 +56,8 @@ export default async function EditSubscriptionPage({
                         {subscription.service_name.slice(0, 2).toUpperCase()}
                     </div>
                     <div>
-                        <h1 className="text-xl font-bold text-white">Edit {subscription.service_name}</h1>
-                        <p className="text-sm text-zinc-500">Update subscription details</p>
+                        <h1 className="text-xl font-bold text-white">Editar {subscription.service_name}</h1>
+                        <p className="text-sm text-zinc-500">Atualize os detalhes da assinatura</p>
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@ export default async function EditSubscriptionPage({
                     {/* Service Name */}
                     <div className="flex flex-col gap-1.5">
                         <label htmlFor="service_name" className="text-sm font-medium text-zinc-300">
-                            Service Name
+                            Nome do Serviço
                         </label>
                         <input
                             id="service_name"
@@ -83,7 +83,7 @@ export default async function EditSubscriptionPage({
                     {/* Price */}
                     <div className="flex flex-col gap-1.5">
                         <label htmlFor="price" className="text-sm font-medium text-zinc-300">
-                            Price (R$)
+                            Preço (R$)
                         </label>
                         <input
                             id="price"
@@ -100,7 +100,7 @@ export default async function EditSubscriptionPage({
                     {/* Billing Cycle */}
                     <div className="flex flex-col gap-1.5">
                         <label htmlFor="billing_cycle" className="text-sm font-medium text-zinc-300">
-                            Billing Cycle
+                            Ciclo de Cobrança
                         </label>
                         <select
                             id="billing_cycle"
@@ -108,15 +108,15 @@ export default async function EditSubscriptionPage({
                             defaultValue={subscription.billing_cycle}
                             className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all text-sm"
                         >
-                            <option value="monthly">Monthly</option>
-                            <option value="yearly">Yearly</option>
+                            <option value="monthly">Mensal</option>
+                            <option value="yearly">Anual</option>
                         </select>
                     </div>
 
                     {/* Next Billing Date */}
                     <div className="flex flex-col gap-1.5">
                         <label htmlFor="next_billing_date" className="text-sm font-medium text-zinc-300">
-                            Next Billing Date
+                            Próxima Cobrança
                         </label>
                         <input
                             id="next_billing_date"
@@ -132,7 +132,7 @@ export default async function EditSubscriptionPage({
                     <div className="grid grid-cols-2 gap-3">
                         <div className="flex flex-col gap-1.5">
                             <label htmlFor="category" className="text-sm font-medium text-zinc-300">
-                                Category
+                                Categoria
                             </label>
                             <select
                                 id="category"
@@ -147,7 +147,7 @@ export default async function EditSubscriptionPage({
                         </div>
                         <div className="flex flex-col gap-1.5">
                             <label htmlFor="color_hex" className="text-sm font-medium text-zinc-300">
-                                Color
+                                Cor
                             </label>
                             <input
                                 id="color_hex"
@@ -166,7 +166,7 @@ export default async function EditSubscriptionPage({
                             className="flex-1 px-4 py-3 bg-purple-500 hover:bg-purple-600 text-white font-semibold text-sm rounded-xl transition-colors shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2"
                         >
                             <Save className="w-4 h-4" />
-                            Save Changes
+                            Salvar Alterações
                         </button>
                     </div>
                 </form>
@@ -180,7 +180,7 @@ export default async function EditSubscriptionPage({
                             className="w-full px-4 py-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 font-medium text-sm rounded-xl transition-colors border border-red-500/20 hover:border-red-500/30 flex items-center justify-center gap-2"
                         >
                             <Trash2 className="w-4 h-4" />
-                            Delete Subscription
+                            Excluir Assinatura
                         </button>
                     </form>
                 </div>

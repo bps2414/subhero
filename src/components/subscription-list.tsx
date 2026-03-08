@@ -76,12 +76,12 @@ function SubscriptionRow({ sub, onSplitClick }: SubscriptionRowProps) {
                     )}
                 >
                     {isPast
-                        ? 'Overdue'
+                        ? 'Atrasado'
                         : daysUntil === 0
-                            ? 'Today'
+                            ? 'Hoje'
                             : daysUntil === 1
-                                ? 'Tomorrow'
-                                : `in ${daysUntil} days`}
+                                ? 'Amanhã'
+                                : `em ${daysUntil} dias`}
                 </span>
             </div>
 
@@ -89,7 +89,7 @@ function SubscriptionRow({ sub, onSplitClick }: SubscriptionRowProps) {
             <div className="text-right">
                 <p className="text-sm font-semibold text-white">{formatCurrency(sub.price)}</p>
                 <p className="text-[10px] text-zinc-600">
-                    /{sub.billing_cycle === 'monthly' ? 'mo' : 'yr'}
+                    /{sub.billing_cycle === 'monthly' ? 'mês' : 'ano'}
                 </p>
             </div>
 
@@ -98,14 +98,14 @@ function SubscriptionRow({ sub, onSplitClick }: SubscriptionRowProps) {
                 <button
                     onClick={() => onSplitClick(sub)}
                     className="p-1.5 rounded-lg text-zinc-500 hover:text-green-400 hover:bg-green-500/[0.08] transition-all"
-                    aria-label={`Split cost for ${sub.service_name}`}
+                    aria-label={`Dividir custo de ${sub.service_name}`}
                 >
                     <HandCoins className="w-4 h-4" />
                 </button>
                 <Link
                     href={`/dashboard/edit/${sub.id}`}
                     className="p-1.5 rounded-lg text-zinc-500 hover:text-purple-400 hover:bg-purple-500/[0.08] transition-all"
-                    aria-label={`Edit ${sub.service_name}`}
+                    aria-label={`Editar ${sub.service_name}`}
                 >
                     <Pencil className="w-4 h-4" />
                 </Link>
@@ -114,7 +114,7 @@ function SubscriptionRow({ sub, onSplitClick }: SubscriptionRowProps) {
                     <button
                         type="submit"
                         className="p-1.5 rounded-lg text-zinc-500 hover:text-red-400 hover:bg-red-500/[0.08] transition-all"
-                        aria-label={`Delete ${sub.service_name}`}
+                        aria-label={`Deletar ${sub.service_name}`}
                     >
                         <Trash2 className="w-4 h-4" />
                     </button>
@@ -133,9 +133,9 @@ export function SubscriptionList({ subscriptions }: SubscriptionListProps) {
                 <div className="w-16 h-16 rounded-2xl bg-zinc-800/50 flex items-center justify-center mb-4">
                     <Ghost className="w-8 h-8 text-zinc-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-1">No ghost subs here... yet</h3>
+                <h3 className="text-lg font-semibold text-white mb-1">Nada por aqui... ainda</h3>
                 <p className="text-sm text-zinc-500 max-w-sm">
-                    You haven&apos;t added any subscriptions. Add your first one to start tracking and optimize your spending.
+                    Você não adicionou nenhuma assinatura. Crie a primeira para começar a acompanhar seus gastos.
                 </p>
             </div>
         )
@@ -146,9 +146,9 @@ export function SubscriptionList({ subscriptions }: SubscriptionListProps) {
             <div className="glass-card overflow-hidden animate-fade-in stagger-5">
                 {/* List header */}
                 <div className="flex items-center justify-between px-5 py-3 border-b border-zinc-800/50">
-                    <h2 className="text-sm font-semibold text-white">Active Subscriptions</h2>
+                    <h2 className="text-sm font-semibold text-white">Assinaturas Ativas</h2>
                     <span className="text-xs font-medium text-zinc-500 bg-zinc-800/50 px-2.5 py-1 rounded-full">
-                        {subscriptions.length} active
+                        {subscriptions.length} ativas
                     </span>
                 </div>
 

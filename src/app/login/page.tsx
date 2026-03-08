@@ -29,9 +29,9 @@ export default function LoginPage({
                             />
                         </svg>
                     </div>
-                    <h1 className="text-2xl font-bold text-white">Welcome back to SubHero</h1>
+                    <h1 className="text-2xl font-bold text-white">Bem-vindo(a) ao SubHero</h1>
                     <p className="text-zinc-400 mt-2 text-center">
-                        Sign in to manage your subscriptions and stop wasting money.
+                        Faça login para gerenciar suas assinaturas e parar de perder dinheiro.
                     </p>
                 </div>
 
@@ -39,13 +39,13 @@ export default function LoginPage({
                     <form className="flex flex-col gap-4">
                         <div className="flex flex-col gap-2">
                             <label htmlFor="email" className="text-sm font-medium text-zinc-300">
-                                Email address
+                                Endereço de email
                             </label>
                             <input
                                 id="email"
                                 name="email"
                                 type="email"
-                                placeholder="you@example.com"
+                                placeholder="voce@exemplo.com"
                                 required
                                 className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all font-sans"
                             />
@@ -55,7 +55,7 @@ export default function LoginPage({
                             formAction={login}
                             className="mt-2 w-full px-4 py-3 bg-white text-zinc-950 font-semibold rounded-xl hover:bg-zinc-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]"
                         >
-                            Log In / Sign Up
+                            Entrar / Criar Conta
                         </button>
 
                         {searchParams?.message && (

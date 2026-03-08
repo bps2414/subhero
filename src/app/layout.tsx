@@ -14,9 +14,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "SubHero — Stop Losing Money to Ghost Subscriptions",
+  title: "SubHero — Pare de Perder Dinheiro com Assinaturas",
   description:
-    "The subscription copilot that tracks, optimizes, and helps you safely split costs. Take control of your recurring expenses.",
+    "O copiloto de assinaturas que acompanha, otimiza e ajuda a dividir custos com segurança. Assuma o controle de suas despesas recorrentes.",
 };
 
 export default function RootLayout({

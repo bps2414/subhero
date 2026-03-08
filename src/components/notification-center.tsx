@@ -63,7 +63,7 @@ export function NotificationCenter({ subscriptions }: NotificationCenterProps) {
                         ? "bg-zinc-800 text-white border-zinc-700"
                         : "bg-zinc-900/60 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"
                 )}
-                aria-label="Notifications"
+                aria-label="Notificações"
             >
                 <Bell className="w-4 h-4" />
                 {unreadCount > 0 && (
@@ -75,10 +75,10 @@ export function NotificationCenter({ subscriptions }: NotificationCenterProps) {
             {isOpen && (
                 <div className="absolute right-0 mt-2 w-80 glass-card rounded-2xl shadow-2xl border border-zinc-800/50 overflow-hidden animate-fade-in origin-top-right z-50">
                     <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-800/50 bg-zinc-900/50">
-                        <h3 className="text-sm font-semibold text-white">Notifications</h3>
+                        <h3 className="text-sm font-semibold text-white">Notificações</h3>
                         {unreadCount > 0 && (
                             <span className="text-[10px] font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full">
-                                {unreadCount} New
+                                {unreadCount} Novas
                             </span>
                         )}
                     </div>
@@ -87,8 +87,8 @@ export function NotificationCenter({ subscriptions }: NotificationCenterProps) {
                         {notifications.length === 0 ? (
                             <div className="p-8 flex flex-col items-center justify-center text-center">
                                 <Bell className="w-8 h-8 text-zinc-700 mb-2" />
-                                <p className="text-sm font-medium text-white mb-1">You&apos;re all caught up!</p>
-                                <p className="text-xs text-zinc-500">No upcoming renewals in the next 7 days.</p>
+                                <p className="text-sm font-medium text-white mb-1">Tudo em dia!</p>
+                                <p className="text-xs text-zinc-500">Nenhuma renovação nos próximos 7 dias.</p>
                             </div>
                         ) : (
                             <div className="divide-y divide-zinc-800/30">
@@ -111,9 +111,9 @@ export function NotificationCenter({ subscriptions }: NotificationCenterProps) {
                                                 <p className="text-sm text-zinc-300 leading-snug">
                                                     <span className="font-semibold text-white">{sub.service_name}</span>
                                                     {' '}
-                                                    {isOverdue && 'is overdue since '}
-                                                    {isToday && 'renews today!'}
-                                                    {!isOverdue && !isToday && `renews in ${days} ${days === 1 ? 'day' : 'days'}.`}
+                                                    {isOverdue && 'está atrasada desde '}
+                                                    {isToday && 'renova hoje!'}
+                                                    {!isOverdue && !isToday && `renova em ${days} ${days === 1 ? 'dia' : 'dias'}.`}
                                                 </p>
                                                 <p className={cn(
                                                     "text-xs mt-1 font-medium",

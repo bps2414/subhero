@@ -26,7 +26,7 @@ export async function Header() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                 <input
                     type="text"
-                    placeholder="Search subscriptions..."
+                    placeholder="Buscar assinaturas..."
                     className="w-full pl-10 pr-4 py-2 text-sm bg-zinc-900/60 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all"
                 />
             </div>
@@ -43,7 +43,7 @@ export async function Header() {
                     </div>
                     <div className="hidden md:block">
                         <p className="text-sm font-medium text-white leading-none">{displayName}</p>
-                        <p className="text-[11px] text-zinc-500 mt-0.5">Free Plan</p>
+                        <p className="text-[11px] text-zinc-500 mt-0.5">Plano Grátis</p>
                     </div>
                 </div>
             </div>

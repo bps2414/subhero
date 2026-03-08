@@ -48,15 +48,15 @@ export function InsightsCard({ subscriptions }: InsightsCardProps) {
     let insightTone = "purple"
 
     if (yearlyCost > 2000) {
-        insightMessage = "You're spending quite a lot. Consider reviewing unused services."
+        insightMessage = "Você está gastando bastante. Considere revisar serviços que não utiliza."
         insightIcon = <AlertTriangle className="w-5 h-5 text-red-400" />
         insightTone = "red"
     } else if (subscriptions.length > 5) {
-        insightMessage = "You have many active services. A quick audit might save you money!"
+        insightMessage = "Você possui vários serviços ativos. Uma rápida auditoria pode economizar dinheiro!"
         insightIcon = <TrendingDown className="w-5 h-5 text-orange-400" />
         insightTone = "orange"
     } else {
-        insightMessage = "Your subscriptions are looking lean and optimized. Great job!"
+        insightMessage = "Suas assinaturas parecem enxutas e otimizadas. Bom trabalho!"
         insightIcon = <Award className="w-5 h-5 text-green-400" />
         insightTone = "green"
     }
@@ -76,7 +76,7 @@ export function InsightsCard({ subscriptions }: InsightsCardProps) {
                         {insightIcon}
                     </div>
                     <div>
-                        <h2 className="text-sm font-bold text-white">SubHero AI Insight</h2>
+                        <h2 className="text-sm font-bold text-white">SubHero Insight de IA</h2>
                         <p className="text-xs text-zinc-300 mt-0.5">{insightMessage}</p>
                     </div>
                 </div>
@@ -85,14 +85,14 @@ export function InsightsCard({ subscriptions }: InsightsCardProps) {
             <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Core Metric */}
                 <div className="flex flex-col justify-center">
-                    <p className="text-sm font-medium text-zinc-500 mb-2">Projected Yearly Spend</p>
+                    <p className="text-sm font-medium text-zinc-500 mb-2">Gasto Anual Projetado</p>
                     <div className="flex items-baseline gap-2">
                         <span className="text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-zinc-500">
                             {formatCurrency(yearlyCost)}
                         </span>
                     </div>
                     <p className="text-xs text-zinc-500 mt-2">
-                        That&apos;s roughly {formatCurrency(yearlyCost / 12)} per month dedicated to subscriptions.
+                        Isso é aproximadamente {formatCurrency(yearlyCost / 12)} por mês dedicado a assinaturas.
                     </p>
                 </div>
 
@@ -109,15 +109,15 @@ export function InsightsCard({ subscriptions }: InsightsCardProps) {
                         {topExpense.service_name.slice(0, 2).toUpperCase()}
                     </div>
                     <div className="flex-1 min-w-0">
-                        <p className="text-xs font-semibold text-zinc-500 mb-0.5">Biggest Drain</p>
+                        <p className="text-xs font-semibold text-zinc-500 mb-0.5">Maior Gasto</p>
                         <p className="text-sm font-bold text-white truncate">{topExpense.service_name}</p>
                         <p className="text-xs text-zinc-400 mt-0.5">
-                            Taking up <span className="text-zinc-300 font-semibold">{percentageOfTotal}%</span> of your budget
+                            Consumindo <span className="text-zinc-300 font-semibold">{percentageOfTotal}%</span> do orçamento
                         </p>
                     </div>
                     <div className="text-right">
                         <p className="text-sm font-bold text-white">{formatCurrency(topExpenseMonthly)}</p>
-                        <p className="text-[10px] text-zinc-500">/mo</p>
+                        <p className="text-[10px] text-zinc-500">/mês</p>
                     </div>
                 </div>
             </div>

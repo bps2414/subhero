@@ -54,19 +54,13 @@ export default async function DashboardPage() {
         return nextDate >= today && nextDate <= in7Days
     })
 
-    const displayName = user.email?.split('@')[0] ?? 'User'
-
     return (
         <div className="space-y-6 animate-fade-in">
             {/* Welcome + Add Button */}
-            <div className="flex items-start justify-between">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-white tracking-tight">
-                        Welcome back, <span className="text-purple-400">{displayName}</span> 👋
-                    </h1>
-                    <p className="text-sm text-zinc-500 mt-1">
-                        Here&apos;s an overview of your subscriptions and spending.
-                    </p>
+                    <h1 className="text-3xl font-bold text-white tracking-tight">Dashboard</h1>
+                    <p className="text-zinc-400 mt-1">Bem-vindo de volta! Gerencie suas assinaturas ativas.</p>
                 </div>
                 <DashboardActions />
             </div>
@@ -74,28 +68,28 @@ export default async function DashboardPage() {
             {/* Summary Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <SummaryCard
-                    title="Monthly Total"
+                    title="Total Mensal"
                     value={formatCurrency(monthlyCost)}
-                    subtitle="All active subscriptions"
+                    subtitle="Todas as assinaturas ativas"
                     icon={DollarSign}
                     accentColor="purple"
                     className="stagger-1 animate-fade-in"
                 />
                 <SummaryCard
-                    title="Active Subscriptions"
+                    title="Assinaturas Ativas"
                     value={subs.length.toString()}
-                    subtitle={subs.length === 1 ? '1 service tracked' : `${subs.length} services tracked`}
+                    subtitle={subs.length === 1 ? '1 serviço rastreado' : `${subs.length} serviços rastreados`}
                     icon={CreditCard}
                     accentColor="blue"
                     className="stagger-2 animate-fade-in"
                 />
                 <SummaryCard
-                    title="Upcoming (7 days)"
+                    title="Próximas Cobranças"
                     value={upcoming.length.toString()}
                     subtitle={
                         upcoming.length > 0
-                            ? `${formatCurrency(upcoming.reduce((a, s) => a + Number(s.price), 0))} due soon`
-                            : 'Nothing coming up'
+                            ? `${formatCurrency(upcoming.reduce((a, s) => a + Number(s.price), 0))} vencendo em breve`
+                            : 'Nada vencendo em breve'
                     }
                     icon={CalendarClock}
                     accentColor="orange"

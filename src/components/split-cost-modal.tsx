@@ -24,9 +24,9 @@ export function SplitCostModal({ isOpen, onClose, subscription }: SplitCostModal
     if (!isOpen || !subscription) return null
 
     const splitPrice = (subscription.price / 2).toFixed(2)
-    const cycleText = subscription.billing_cycle === 'monthly' ? 'month' : 'year'
+    const cycleText = subscription.billing_cycle === 'monthly' ? 'mês' : 'ano'
 
-    const generatedMessage = `Hey! Your share for ${subscription.service_name} this ${cycleText} is R$ ${splitPrice}. Send it over via PIX: ${pixKey || '[YOUR PIX KEY]'}`
+    const generatedMessage = `Opa! Sua parte da assinatura da ${subscription.service_name} neste ${cycleText} é de R$ ${splitPrice}. Me envia via Pix: ${pixKey || '[SEU PIX AQUI]'}`
 
     async function handleCopy() {
         try {
@@ -62,14 +62,14 @@ export function SplitCostModal({ isOpen, onClose, subscription }: SplitCostModal
                             <HandCoins className="w-5 h-5" />
                         </div>
                         <div>
-                            <h2 className="text-lg font-bold text-white">Split the Bill</h2>
-                            <p className="text-xs text-zinc-500">Split {subscription.service_name} via Pix</p>
+                            <h2 className="text-lg font-bold text-white">Dividir Conta</h2>
+                            <p className="text-xs text-zinc-500">Rachar {subscription.service_name} via Pix</p>
                         </div>
                     </div>
                     <button
                         onClick={onClose}
                         className="p-1.5 rounded-xl text-zinc-500 hover:text-white hover:bg-white/[0.05] transition-all"
-                        aria-label="Close modal"
+                        aria-label="Fechar modal"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -79,13 +79,13 @@ export function SplitCostModal({ isOpen, onClose, subscription }: SplitCostModal
                     {/* Your Pix Key */}
                     <div className="flex flex-col gap-1.5">
                         <label htmlFor="pix_key" className="text-xs font-medium text-zinc-400">
-                            Your Pix Key (Optional)
+                            Sua Chave Pix (Opcional)
                         </label>
                         <input
                             id="pix_key"
                             value={pixKey}
                             onChange={(e) => setPixKey(e.target.value)}
-                            placeholder="e.g., 123.456.789-00"
+                            placeholder="ex: 123.456.789-00 ou email@pix.com"
                             className="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all text-sm"
                         />
                     </div>
@@ -93,7 +93,7 @@ export function SplitCostModal({ isOpen, onClose, subscription }: SplitCostModal
                     {/* Generated Message Preview */}
                     <div className="flex flex-col gap-1.5">
                         <label className="text-xs font-medium text-zinc-400">
-                            Message Preview
+                            Previsão da Mensagem
                         </label>
                         <div className="p-3 bg-white/[0.02] border border-zinc-800/50 rounded-lg">
                             <p className="text-sm text-zinc-300 leading-relaxed break-words">
@@ -110,12 +110,12 @@ export function SplitCostModal({ isOpen, onClose, subscription }: SplitCostModal
                         {copied ? (
                             <>
                                 <Check className="w-4 h-4" />
-                                Copied to clipboard!
+                                Copiado para  área de transferência!
                             </>
                         ) : (
                             <>
                                 <Copy className="w-4 h-4" />
-                                Copy Message
+                                Copiar Mensagem
                             </>
                         )}
                     </button>

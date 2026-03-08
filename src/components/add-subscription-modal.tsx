@@ -78,10 +78,10 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                 <div className="flex items-center justify-between mb-6">
                     <div>
                         <h2 className="text-lg font-bold text-white">
-                            {showForm ? 'Subscription Details' : 'Add Subscription'}
+                            {showForm ? 'Detalhes da Assinatura' : 'Nova Assinatura'}
                         </h2>
                         <p className="text-sm text-zinc-500 mt-0.5">
-                            {showForm ? 'Fill in the details below' : 'Choose a service or add a custom one'}
+                            {showForm ? 'Preencha os detalhes abaixo' : 'Escolha um serviço ou crie um personalizado'}
                         </p>
                     </div>
                     <button
@@ -131,9 +131,9 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                                     <Sparkles className="w-5 h-5 text-purple-400" />
                                 </div>
                                 <span className="text-xs font-medium text-zinc-300 group-hover:text-purple-400 transition-colors">
-                                    Custom
+                                    Personalizado
                                 </span>
-                                <span className="text-[10px] text-zinc-600">Your service</span>
+                                <span className="text-[10px] text-zinc-600">Seu serviço</span>
                             </button>
                         </div>
                     </>
@@ -144,14 +144,14 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                         {isCustom ? (
                             <div className="flex flex-col gap-1.5">
                                 <label htmlFor="service_name" className="text-sm font-medium text-zinc-300">
-                                    Service Name
+                                    Nome do Serviço
                                 </label>
                                 <input
                                     id="service_name"
                                     name="service_name"
                                     type="text"
                                     required
-                                    placeholder="e.g., Disney+"
+                                    placeholder="ex: Disney+"
                                     className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all text-sm"
                                 />
                             </div>
@@ -175,7 +175,7 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                                     onClick={() => { setSelectedTemplate(null); setIsCustom(false) }}
                                     className="text-xs text-zinc-500 hover:text-white transition-colors"
                                 >
-                                    Change
+                                    Alterar
                                 </button>
                             </div>
                         )}
@@ -183,7 +183,7 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                         {/* Price */}
                         <div className="flex flex-col gap-1.5">
                             <label htmlFor="price" className="text-sm font-medium text-zinc-300">
-                                Price (R$)
+                                Preço (R$)
                             </label>
                             <input
                                 id="price"
@@ -201,7 +201,7 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                         {/* Billing Cycle */}
                         <div className="flex flex-col gap-1.5">
                             <label htmlFor="billing_cycle" className="text-sm font-medium text-zinc-300">
-                                Billing Cycle
+                                Ciclo de Cobrança
                             </label>
                             <select
                                 id="billing_cycle"
@@ -209,15 +209,15 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                                 defaultValue={selectedTemplate?.billing_cycle ?? 'monthly'}
                                 className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all text-sm"
                             >
-                                <option value="monthly">Monthly</option>
-                                <option value="yearly">Yearly</option>
+                                <option value="monthly">Mensal</option>
+                                <option value="yearly">Anual</option>
                             </select>
                         </div>
 
                         {/* Next Billing Date */}
                         <div className="flex flex-col gap-1.5">
                             <label htmlFor="next_billing_date" className="text-sm font-medium text-zinc-300">
-                                Next Billing Date
+                                Próxima Cobrança
                             </label>
                             <input
                                 id="next_billing_date"
@@ -233,7 +233,7 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="flex flex-col gap-1.5">
                                     <label htmlFor="category" className="text-sm font-medium text-zinc-300">
-                                        Category
+                                        Categoria
                                     </label>
                                     <select
                                         id="category"
@@ -247,7 +247,7 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                                 </div>
                                 <div className="flex flex-col gap-1.5">
                                     <label htmlFor="color_hex" className="text-sm font-medium text-zinc-300">
-                                        Color
+                                        Cor
                                     </label>
                                     <input
                                         id="color_hex"
@@ -281,12 +281,12 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                             {isPending ? (
                                 <>
                                     <div className="w-4 h-4 border-2 border-zinc-600 border-t-zinc-400 rounded-full animate-spin" />
-                                    Adding...
+                                    Adicionando...
                                 </>
                             ) : (
                                 <>
                                     <Check className="w-4 h-4" />
-                                    Add Subscription
+                                    Adicionar Assinatura
                                 </>
                             )}
                         </button>
